@@ -8,7 +8,7 @@ game_screen = pygame.display.set_mode((1000,700))
 pygame.display.set_caption("Rheo's world")
 
 #assets
-bg_image = pygame.image.load('Background.png')
+bg_image = pygame.image.load('images/Background.png')
 
 #grid for working on the project (you mau delete it)
 def grid_lines():
@@ -22,7 +22,7 @@ class World():
         self.tile_list = []
         
         #images
-        ground_image = pygame.image.load('light_block.png')
+        ground_image = pygame.image.load('images/light_block.png')
 
         #loop for blocks
         row_count = 0
