@@ -17,33 +17,40 @@ def grid_lines():
         pygame.draw.line(game_screen,(255,255,255), (0, i), (1000, i))
 
 #world building
-class World_build():
-    def init (self, data):
-            #images
-            ground_image = pygame.image.load('light_block.png')
+class World():
+    def __init__(self, data):
+        self.tile_list = []
+        
+        #images
+        ground_image = pygame.image.load('light_block.png')
 
-            #loop for blocks
-            row_count = 0
-            for row in data:
-                 collumn_count = 0
-                 for tile in row:
-                      if tile == 1:
-                           img = pygame.transform.scale(100,100)
-                           image_block = img.get_rect()
-                           image_block.x = collumn_count * 100
-                           image_block.y = row_count * 100
-                      collumn_count += 1
-                 row_count += 1
+        #loop for blocks
+        row_count = 0
+        for row in data:
+            collumn_count = 0
+            for tile in row:
+                if tile == 1:
+                    image = pygame.transform.scale(ground_image,(100,100))
+                    image_block = image.get_rect()
+                    image_block.x = collumn_count * 100
+                    image_block.y = row_count * 100
+                    tile = (image, image_block)
+                    self.tile_list.append(tile)
+                collumn_count += 1
+            row_count += 1
 
 #plotting th world           
-world_build = list()
-world_build.append([1,1,1,1,1,1,1,1,1,1])
-world_build.append([1,0,0,0,0,0,0,0,0,1]) 
-world_build.append([1,0,0,0,0,0,0,0,0,1]) 
-world_build.append([1,0,0,0,0,0,0,0,0,1]) 
-world_build.append([1,0,0,0,0,0,0,0,0,1]) 
-world_build.append([1,0,0,0,0,0,0,0,0,1]) 
-world_build.append([1,1,1,1,1,1,1,1,1,1])
+world_plot = [
+[1,1,1,1,1,1,1,1,1,1],
+[1,0,0,0,0,0,0,0,0,1], 
+[1,0,0,0,0,0,0,0,0,1],
+[1,0,0,0,0,0,0,0,0,1],
+[1,0,0,0,0,0,0,0,0,1],
+[1,0,0,0,0,0,0,0,0,1],
+[1,1,1,1,1,1,1,1,1,1], 
+]
+
+world = World(world_plot)
 
 #game startup loop
 game_on = True
