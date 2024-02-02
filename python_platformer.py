@@ -9,9 +9,14 @@ pygame.display.set_caption("Rheo's world")
 #images 
 bg_image = pygame.image.load('Untitled design (2).png')
 
+
 game_on = True
+#game startup loop
 while game_on:
+    #backgrounds and assets
     game_screen.blit(bg_image, (0,0,))
+
+    #game loop
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game_on = False
